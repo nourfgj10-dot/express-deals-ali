@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExpressDeals - Global Shopping Deals</title>
+    <title>ExpressDeals - تسوق ذكي وعمولة مضمونة</title>
+    <meta name="description" content="اكتشف أفضل صفقات AliExpress مع عمولة على كل عملية شراء. تسوق بذكاء واربح معنا">
     
     <style>
+        /* الأساسيات */
         * {
             margin: 0;
             padding: 0;
@@ -13,287 +15,339 @@
         }
         
         :root {
-            --primary: #ff4747;
-            --secondary: #ff6b6b;
-            --accent: #ffd166;
-            --dark: #2d3748;
-            --light: #ffffff;
-            --success: #00c853;
-            --border: #e5e7eb;
-            --bg-light: #f8f9fa;
-            --gradient: linear-gradient(135deg, #ff4747 0%, #ff6b6b 100%);
-            --gradient-hover: linear-gradient(135deg, #e53e3e 0%, #ff4747 100%);
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --primary: #2563eb;       /* أزرق جذاب */
+            --secondary: #3b82f6;     /* أزرق فاتح */
+            --accent: #f59e0b;        /* ذهبي للتميز */
+            --light: #f8fafc;         /* خلفية فاتحة */
+            --dark: #1e293b;          /* نصوص داكنة */
+            --border: #e2e8f0;        /* حدود فاتحة */
+            --success: #10b981;       /* أخضر النجاح */
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-light);
+            font-family: 'Segoe UI', 'Tahoma', 'Arial Arabic', sans-serif;
+            background-color: var(--light);
             color: var(--dark);
-            line-height: 1.5;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* الهيكل العام */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
-
-        /* الهيدر */
+        
+        /* الهيدر البسيط */
         .header {
             background: white;
-            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow);
         }
-
-        .nav {
+        
+        .header-content {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            gap: 30px;
+            padding: 15px 0;
         }
-
+        
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 28px;
+            font-weight: 800;
             color: var(--primary);
-            text-decoration: none;
-        }
-
-        .search-box {
-            flex: 1;
-            max-width: 600px;
             display: flex;
-            background: white;
-            border: 2px solid var(--primary);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .search-input {
-            flex: 1;
-            border: none;
-            padding: 10px 15px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .search-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0 20px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
             align-items: center;
+            gap: 10px;
         }
-
+        
+        .logo-icon {
+            color: var(--accent);
+            font-size: 32px;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 25px;
+        }
+        
         .nav-link {
             color: var(--dark);
-            text-decoration: none;
-            font-size: 14px;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: background 0.2s;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
         }
-
+        
         .nav-link:hover {
-            background: var(--bg-light);
+            background: var(--light);
+            color: var(--primary);
         }
-
-        /* الهيرو */
+        
+        /* الهيرو الجذاب */
         .hero {
-            background: linear-gradient(135deg, #ff4747 0%, #ff6b6b 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 120px 0 60px;
+            padding: 140px 0 80px;
+            margin-top: 70px;
             text-align: center;
-            margin-top: 60px;
+            border-radius: 0 0 30px 30px;
         }
-
+        
         .hero-title {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .hero-subtitle {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-
-        /* قسم المنتجات */
-        .products-section {
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 42px;
+            font-weight: 800;
             margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* الأزرار */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-right: 15px;
+        }
+        
+        /* الميزات */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .feature-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
             color: var(--dark);
         }
-
-        .section-description {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            font-size: 16px;
+        
+        /* قسم المنتجات */
+        .products-section {
+            padding: 80px 0;
+            background: #f1f5f9;
         }
-
-        /* صندوق إضافة منتجات */
-        .add-product-box {
-            background: white;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: var(--shadow);
-            border: 2px dashed var(--border);
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            color: #64748b;
+            font-size: 18px;
             max-width: 600px;
             margin: 0 auto;
         }
-
-        .add-icon {
-            font-size: 48px;
+        
+        /* دعوة للعمل */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 30px;
+            margin: 80px auto;
+            max-width: 1200px;
+        }
+        
+        .cta-title {
+            font-size: 38px;
+            font-weight: 800;
             margin-bottom: 20px;
         }
-
-        .add-title {
-            font-size: 24px;
-            color: var(--dark);
-            margin-bottom: 10px;
-        }
-
-        .add-description {
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .add-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 32px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .add-btn:hover {
-            background: var(--secondary);
-        }
-
-        /* الفئات */
-        .categories {
-            display: flex;
-            gap: 10px;
-            margin: 30px auto;
-            flex-wrap: wrap;
-            justify-content: center;
-            max-width: 800px;
-        }
-
-        .category-btn {
-            background: white;
-            border: 1px solid var(--border);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .category-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
+        
         /* الفوتر */
         .footer {
-            background: white;
-            border-top: 1px solid var(--border);
-            padding: 40px 0 20px;
-            margin-top: 40px;
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
         }
-
+        
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
-
-        .footer-section h4 {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: var(--dark);
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
         }
-
+        
         .footer-links {
             list-style: none;
         }
-
+        
         .footer-links li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
-
+        
         .footer-links a {
-            color: #666;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.2s;
+            color: #cbd5e1;
+            transition: color 0.3s;
         }
-
+        
         .footer-links a:hover {
-            color: var(--primary);
+            color: white;
         }
-
+        
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            color: #666;
-            font-size: 12px;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
         }
-
+        
         /* التجاوب */
         @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                gap: 15px;
-                padding: 10px 0;
-            }
-            
-            .search-box {
-                max-width: 100%;
-                order: 3;
-            }
-            
-            .hero {
-                padding: 100px 0 40px;
-                margin-top: 120px;
-            }
-            
             .hero-title {
+                font-size: 32px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .section-title {
                 font-size: 28px;
             }
             
-            .add-product-box {
-                padding: 30px 20px;
+            .btn {
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card {
+                padding: 25px 20px;
+            }
+        }
+        
+        /* تحسينات للجوال */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background: white;
+                width: 80%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: var(--shadow-hover);
+                transition: right 0.3s;
+            }
+            
+            .main-nav.active {
+                right: 0;
             }
         }
     </style>
@@ -302,118 +356,216 @@
     <!-- الهيدر -->
     <header class="header">
         <div class="container">
-            <nav class="nav">
-                <a href="#" class="logo">ExpressDeals</a>
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon">🛍️</span>
+                    <span>ExpressDeals</span>
+                </a>
                 
-                <div class="search-box">
-                    <input type="text" class="search-input" placeholder="ابحث عن منتجات...">
-                    <button class="search-btn">بحث</button>
-                </div>
+                <button class="mobile-menu-btn" id="menuBtn">☰</button>
                 
-                <div class="nav-links">
+                <nav class="main-nav" id="mainNav">
                     <a href="#home" class="nav-link">الرئيسية</a>
-                    <a href="#products" class="nav-link">العروض</a>
-                    <a href="#categories" class="nav-link">الفئات</a>
-                </div>
-            </nav>
+                    <a href="#features" class="nav-link">لماذا نحن؟</a>
+                    <a href="#products" class="nav-link">المنتجات</a>
+                    <a href="#how-it-works" class="nav-link">كيفية العمل</a>
+                    <a href="#contact" class="nav-link">اتصل بنا</a>
+                </nav>
+            </div>
         </div>
     </header>
 
     <!-- الهيرو -->
     <section id="home" class="hero">
         <div class="container">
-            <h1 class="hero-title">أفضل العروض والصفقات</h1>
-            <p class="hero-subtitle">تسوق بذكاء ووفر أكثر مع أفضل الأسعار من حول العالم</p>
+            <h1 class="hero-title">تسوق بذكاء. وفر أكثر. اربح عمولة.</h1>
+            <p class="hero-subtitle">منصة موثوقة تقدم أفضل منتجات AliExpress مع ضمان العمولة على كل عملية شراء. اكتشف صفقات لا تُصدق!</p>
+            <div style="margin-top: 40px;">
+                <a href="#products" class="btn btn-secondary">تصفح المنتجات</a>
+                <a href="#how-it-works" class="btn btn-primary">كيف أربح عمولة؟</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الميزات -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">لماذا تختار ExpressDeals؟</h2>
+                <p class="section-subtitle">نقدم لك تجربة تسوق فريدة مع مزايا حصرية</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">عمولة مضمونة</h3>
+                    <p>احصل على عمولة مباشرة على كل عملية شراء تتم عبر رابطك</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">شحن سريع</h3>
+                    <p>أسرع طرق الشحن العالمية مع تتبع الطلبات</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">ضمان الجودة</h3>
+                    <p>نختار المنتجات بعناية ونضمن جودتها</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h3 class="feature-title">دعم فني 24/7</h3>
+                    <p>فريق دعم متاح على مدار الساعة لمساعدتك</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- المنتجات -->
     <section id="products" class="products-section">
         <div class="container">
-            <h2 class="section-title">منتجاتنا المميزة</h2>
-            <p class="section-description">نختار لك أفضل المنتجات بعناية لنساعدك في اتخاذ قرار الشراء المناسب</p>
-            
-            <div class="categories">
-                <button class="category-btn active">جميع المنتجات</button>
-                <button class="category-btn">إلكترونيات</button>
-                <button class="category-btn">أدوات</button>
-                <button class="category-btn">موازين</button>
-                <button class="category-btn">هواتف</button>
-                <button class="category-btn">أجهزة ذكية</button>
+            <div class="section-header">
+                <h2 class="section-title">المنتجات المميزة</h2>
+                <p class="section-subtitle">نعمل على إضافة أفضل المنتجات قريباً. يمكنك اقتراح منتجات ترغب في رؤيتها</p>
             </div>
             
-            <div class="add-product-box">
-                <div class="add-icon">📦</div>
-                <h3 class="add-title">قريباً: منتجات جديدة</h3>
-                <p class="add-description">نعمل على إضافة منتجات مميزة جديدة قريباً. يمكنك اقتراح منتجات ترغب في رؤيتها.</p>
-                <button class="add-btn">اقتراح منتج</button>
-            </div>
-            
-            <div style="margin-top: 40px; color: #666; font-size: 14px;">
-                <p>🔍 يمكنك استخدام شريط البحث أعلاه للعثور على منتجات محددة</p>
+            <div class="feature-card" style="max-width: 600px; margin: 0 auto;">
+                <div class="feature-icon">📦</div>
+                <h3 class="feature-title">قريباً: منتجات حصرية</h3>
+                <p style="margin-bottom: 20px;">نضيف منتجات جديدة يومياً. كن أول من يعرف!</p>
+                <button class="btn btn-primary" id="suggestBtn">اقترح منتجاً</button>
             </div>
         </div>
     </section>
 
+    <!-- كيفية العمل -->
+    <section id="how-it-works" class="features" style="background: #f1f5f9;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">كيف تربح معنا؟</h2>
+                <p class="section-subtitle">3 خطوات بسيطة لبدء جني الأرباح</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" style="text-align: right;">
+                    <div class="feature-icon">1️⃣</div>
+                    <h3 class="feature-title">اختر المنتج</h3>
+                    <p>تصفح منتجاتنا واختر ما يعجبك</p>
+                </div>
+                
+                <div class="feature-card" style="text-align: right;">
+                    <div class="feature-icon">2️⃣</div>
+                    <h3 class="feature-title">شارك الرابط</h3>
+                    <p>انسخ رابط المنتج وشاركه مع الآخرين</p>
+                </div>
+                
+                <div class="feature-card" style="text-align: right;">
+                    <div class="feature-icon">3️⃣</div>
+                    <h3 class="feature-title">اربح العمولة</h3>
+                    <p>احصل على عمولتك فور اكتمال الشراء</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- دعوة للعمل -->
+    <div class="container">
+        <div class="cta">
+            <h2 class="cta-title">مستعد لبدء رحلتك معنا؟</h2>
+            <p style="font-size: 18px; margin-bottom: 30px; max-width: 700px; margin: 0 auto 30px;">انضم إلى آلاف المسوقين الناجحين وابدأ في جني الأرباح اليوم</p>
+            <a href="#products" class="btn btn-primary" style="font-size: 18px; padding: 16px 40px;">ابدأ الآن مجاناً</a>
+        </div>
+    </div>
+
     <!-- الفوتر -->
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>ExpressDeals</h4>
-                    <p>منصة تسوق عالمية تقدم أفضل المنتجات بأفضل الأسعار</p>
+                    <h3>ExpressDeals</h3>
+                    <p style="color: #cbd5e1; margin-top: 10px;">منصة التسوق الذكي التي تجمع بين الجودة والربح</p>
                 </div>
+                
                 <div class="footer-section">
-                    <h4>روابط سريعة</h4>
+                    <h3>روابط سريعة</h3>
                     <ul class="footer-links">
                         <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#products">العروض</a></li>
-                        <li><a href="#categories">الفئات</a></li>
+                        <li><a href="#features">المزايا</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#how-it-works">كيفية العمل</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
-                    <h4>الدعم</h4>
+                    <h3>الدعم</h3>
                     <ul class="footer-links">
-                        <li><a href="#">مساعدة</a></li>
-                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
                         <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
                     </ul>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>© 2024 ExpressDeals. جميع الحقوق محفوظة</p>
+                <p>© 2024 ExpressDeals. جميع الحقوق محفوظة | تصميم بكل ❤️ لنجاحك</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // تصفية الفئات
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // عرض رسالة توضيحية
-                alert(`سيتم عرض منتجات الفئة: ${btn.textContent}`);
+        // القائمة المتنقلة
+        const menuBtn = document.getElementById('menuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuBtn.textContent = '☰';
             });
         });
-
+        
         // زر اقتراح منتج
-        document.querySelector('.add-btn').addEventListener('click', () => {
-            const product = prompt('ما هو المنتج الذي ترغب في رؤيته في المتجر؟');
+        document.getElementById('suggestBtn').addEventListener('click', () => {
+            const product = prompt('ما هو المنتج الذي ترغب في رؤيته في متجرنا؟');
             if (product) {
-                alert(`شكراً لك! تم استلام اقتراحك: "${product}"`);
+                alert(`شكراً لك على اقتراحك! "${product}"\nسيتم درسه وإضافته قريباً.`);
             }
         });
-
+        
         // التمرير السلس
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
+        });
+        
+        // إضافة تأثير عند التمرير
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'var(--shadow)';
+            }
         });
     </script>
 </body>

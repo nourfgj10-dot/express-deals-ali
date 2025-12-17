@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpressDeals - Global Shopping Deals</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #ff4747;
+            --secondary: #ff6b6b;
+            --accent: #ffd166;
+            --dark: #2d3748;
+            --light: #ffffff;
+            --success: #00c853;
+            --border: #e5e7eb;
+            --bg-light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #ff4747 0%, #ff6b6b 100%);
+            --gradient-hover: linear-gradient(135deg, #e53e3e 0%, #ff4747 100%);
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-light);
+            color: var(--dark);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* الهيدر */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 600px;
+            display: flex;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .nav-link:hover {
+            background: var(--bg-light);
+        }
+
+        /* الهيرو */
+        .hero {
+            background: linear-gradient(135deg, #ff4747 0%, #ff6b6b 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* قسم المنتجات */
+        .products-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .section-description {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 16px;
+        }
+
+        /* صندوق إضافة منتجات */
+        .add-product-box {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 2px dashed var(--border);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .add-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .add-title {
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .add-description {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .add-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-btn:hover {
+            background: var(--secondary);
+        }
+
+        /* الفئات */
+        .categories {
+            display: flex;
+            gap: 10px;
+            margin: 30px auto;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .category-btn {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* الفوتر */
+        .footer {
+            background: white;
+            border-top: 1px solid var(--border);
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: #666;
+            font-size: 12px;
+        }
+
+        /* التجاوب */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px 0;
+            }
+            
+            .search-box {
+                max-width: 100%;
+                order: 3;
+            }
+            
+            .hero {
+                padding: 100px 0 40px;
+                margin-top: 120px;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .add-product-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">ExpressDeals</a>
+                
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="ابحث عن منتجات...">
+                    <button class="search-btn">بحث</button>
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#home" class="nav-link">الرئيسية</a>
+                    <a href="#products" class="nav-link">العروض</a>
+                    <a href="#categories" class="nav-link">الفئات</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- الهيرو -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="hero-title">أفضل العروض والصفقات</h1>
+            <p class="hero-subtitle">تسوق بذكاء ووفر أكثر مع أفضل الأسعار من حول العالم</p>
+        </div>
+    </section>
+
+    <!-- المنتجات -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title">منتجاتنا المميزة</h2>
+            <p class="section-description">نختار لك أفضل المنتجات بعناية لنساعدك في اتخاذ قرار الشراء المناسب</p>
+            
+            <div class="categories">
+                <button class="category-btn active">جميع المنتجات</button>
+                <button class="category-btn">إلكترونيات</button>
+                <button class="category-btn">أدوات</button>
+                <button class="category-btn">موازين</button>
+                <button class="category-btn">هواتف</button>
+                <button class="category-btn">أجهزة ذكية</button>
+            </div>
+            
+            <div class="add-product-box">
+                <div class="add-icon">📦</div>
+                <h3 class="add-title">قريباً: منتجات جديدة</h3>
+                <p class="add-description">نعمل على إضافة منتجات مميزة جديدة قريباً. يمكنك اقتراح منتجات ترغب في رؤيتها.</p>
+                <button class="add-btn">اقتراح منتج</button>
+            </div>
+            
+            <div style="margin-top: 40px; color: #666; font-size: 14px;">
+                <p>🔍 يمكنك استخدام شريط البحث أعلاه للعثور على منتجات محددة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ExpressDeals</h4>
+                    <p>منصة تسوق عالمية تقدم أفضل المنتجات بأفضل الأسعار</p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#products">العروض</a></li>
+                        <li><a href="#categories">الفئات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>الدعم</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">مساعدة</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 ExpressDeals. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تصفية الفئات
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // عرض رسالة توضيحية
+                alert(`سيتم عرض منتجات الفئة: ${btn.textContent}`);
+            });
+        });
+
+        // زر اقتراح منتج
+        document.querySelector('.add-btn').addEventListener('click', () => {
+            const product = prompt('ما هو المنتج الذي ترغب في رؤيته في المتجر؟');
+            if (product) {
+                alert(`شكراً لك! تم استلام اقتراحك: "${product}"`);
+            }
+        });
+
+        // التمرير السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
