@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExpressDeals - ربح عمولات AliExpress</title>
-    <meta name="description" content="موقع لربح عمولات من منتجات AliExpress - أضف منتجات واربح على كل عملية بيع">
+    <title>عروض AliExpress - أكبر منصة للعروض والكوبونات</title>
+    <meta name="description" content="أكبر منصة لعروض وكوبونات AliExpress في مكان واحد - وفر حتى 90% مع أفضل الصفقات">
     
     <style>
-        /* الأساسيات */
         * {
             margin: 0;
             padding: 0;
@@ -15,38 +14,38 @@
         }
         
         :root {
-            --primary: #dc2626;       /* أحمر AliExpress */
-            --secondary: #ef4444;     /* أحمر فاتح */
-            --accent: #fbbf24;        /* أصفر ذهبي */
-            --dark: #1f2937;          /* داكن للنصوص */
-            --light: #f9fafb;         /* فاتح للخلفيات */
-            --border: #e5e7eb;        /* حدود */
-            --success: #10b981;       /* أخضر النجاح */
-            --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --red: #ff4747;      /* أحمر AliExpress */
+            --dark-red: #e63946; /* أحمر داكن */
+            --yellow: #ffd166;   /* أصفر للعروض */
+            --black: #1a1a1a;    /* أسود */
+            --white: #ffffff;    /* أبيض */
+            --gray: #f5f5f5;     /* رمادي فاتح */
+            --green: #00c853;    /* أخضر التوفير */
         }
         
         body {
-            font-family: 'Segoe UI', 'Tahoma', 'Arial Arabic', sans-serif;
-            background: var(--light);
-            color: var(--dark);
-            line-height: 1.7;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        
+        /* الهيدر البسيط */
+        .header {
+            background: var(--white);
+            border-bottom: 3px solid var(--red);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-        
-        /* الهيدر */
-        .header {
-            background: white;
-            box-shadow: var(--shadow);
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
         }
         
         .header-content {
@@ -57,93 +56,95 @@
         
         .logo {
             font-size: 28px;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
+            font-weight: 900;
+            color: var(--red);
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .logo-icon {
-            color: var(--accent);
-        }
-        
-        .nav-links {
+        .logo-text {
             display: flex;
-            gap: 25px;
+            flex-direction: column;
+            line-height: 1.2;
         }
         
-        .nav-link {
-            color: var(--dark);
+        .main-title {
+            font-size: 24px;
+            color: var(--red);
+        }
+        
+        .sub-title {
+            font-size: 14px;
+            color: var(--black);
             font-weight: 600;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            transition: all 0.3s;
-        }
-        
-        .nav-link:hover {
-            background: var(--light);
-            color: var(--primary);
         }
         
         /* الهيرو */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--red) 0%, var(--dark-red) 100%);
+            color: var(--white);
             padding: 140px 0 80px;
             margin-top: 80px;
             text-align: center;
         }
         
         .hero-title {
-            font-size: 42px;
-            font-weight: 800;
+            font-size: 48px;
+            font-weight: 900;
             margin-bottom: 20px;
-            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero-highlight {
+            color: var(--yellow);
+            background: rgba(0,0,0,0.2);
+            padding: 5px 15px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 0 5px;
         }
         
         .hero-subtitle {
-            font-size: 18px;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 30px;
+            font-size: 22px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 500;
         }
         
-        /* الأزرار */
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
+        /* إحصائيات */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--yellow);
+        }
+        
+        .stat-text {
             font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            text-decoration: none;
+            opacity: 0.9;
         }
         
-        .btn-primary {
-            background: white;
-            color: var(--primary);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            margin-right: 15px;
-        }
-        
-        /* قسم المميزات */
-        .features {
+        /* قسم العروض */
+        .offers-section {
             padding: 80px 0;
+            background: var(--gray);
         }
         
         .section-title {
@@ -151,168 +152,249 @@
             font-size: 36px;
             font-weight: 800;
             margin-bottom: 50px;
-            color: var(--dark);
+            color: var(--black);
         }
         
-        .features-grid {
+        .section-title span {
+            color: var(--red);
+        }
+        
+        /* بطاقات العروض */
+        .offers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
         
-        .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
+        .offer-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .offer-badge {
+            background: var(--red);
+            color: var(--white);
+            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 18px;
             text-align: center;
-            border-top: 4px solid var(--primary);
         }
         
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--primary);
+        .offer-content {
+            padding: 25px;
         }
         
-        .feature-title {
-            font-size: 22px;
+        .offer-title {
+            font-size: 20px;
             font-weight: 700;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: var(--black);
         }
         
-        /* جدول العمولات */
-        .commission-section {
-            background: white;
-            padding: 80px 0;
+        .offer-desc {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
         
-        .commission-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            box-shadow: var(--shadow);
-            border-radius: 12px;
-            overflow: hidden;
+        .offer-price {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         
-        .commission-table th {
-            background: var(--primary);
-            color: white;
-            padding: 20px;
-            text-align: right;
-            font-weight: 600;
+        .price-new {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--red);
         }
         
-        .commission-table td {
-            padding: 18px 20px;
-            border-bottom: 1px solid var(--border);
-            text-align: right;
+        .price-old {
+            font-size: 18px;
+            color: #999;
+            text-decoration: line-through;
         }
         
-        .commission-table tr:hover {
-            background: var(--light);
-        }
-        
-        .commission-badge {
-            background: #d1fae5;
-            color: var(--success);
-            padding: 6px 12px;
+        .save-badge {
+            background: var(--green);
+            color: var(--white);
+            padding: 5px 12px;
             border-radius: 20px;
-            font-weight: 600;
             font-size: 14px;
+            font-weight: 700;
         }
         
-        /* قسم الإضافة */
-        .add-product {
+        .offer-btn {
+            display: block;
+            width: 100%;
+            background: var(--red);
+            color: var(--white);
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .offer-btn:hover {
+            background: var(--dark-red);
+        }
+        
+        /* قسم الكوبونات */
+        .coupons-section {
             padding: 80px 0;
-            background: var(--light);
+            background: var(--white);
+        }
+        
+        .coupon-card {
+            background: linear-gradient(135deg, #ff6b6b 0%, var(--red) 100%);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            box-shadow: 0 10px 30px rgba(255,71,71,0.3);
+        }
+        
+        .coupon-code {
+            background: var(--white);
+            color: var(--red);
+            padding: 15px;
+            font-size: 28px;
+            font-weight: 900;
+            border-radius: 8px;
+            margin: 20px 0;
+            letter-spacing: 3px;
+            font-family: monospace;
+        }
+        
+        /* دعوة للعمل */
+        .cta-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 0;
             text-align: center;
         }
         
-        .add-box {
-            background: white;
-            padding: 50px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            max-width: 600px;
-            margin: 0 auto;
-            border: 2px dashed var(--primary);
+        .cta-title {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
         }
         
-        .add-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-            color: var(--primary);
+        .cta-subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            padding: 18px 50px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: var(--yellow);
+            color: var(--black);
+            transform: scale(1.05);
         }
         
         /* الفوتر */
         .footer {
-            background: var(--dark);
-            color: white;
+            background: var(--black);
+            color: var(--white);
             padding: 60px 0 30px;
+            text-align: center;
         }
         
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-section h3 {
-            font-size: 20px;
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--red);
             margin-bottom: 20px;
-            color: white;
+        }
+        
+        .footer-text {
+            color: #999;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 16px;
         }
         
         .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
         }
         
         .footer-links a {
-            color: #d1d5db;
+            color: #ccc;
             text-decoration: none;
+            font-size: 16px;
             transition: color 0.3s;
         }
         
         .footer-links a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
-            font-size: 14px;
+            color: var(--red);
         }
         
         /* التجاوب */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 32px;
+                font-size: 36px;
             }
             
-            .nav-links {
-                display: none;
+            .hero-subtitle {
+                font-size: 18px;
+                padding: 0 15px;
             }
             
-            .features-grid {
+            .stats {
+                gap: 20px;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .offers-grid {
                 grid-template-columns: 1fr;
             }
             
-            .commission-table {
-                font-size: 14px;
+            .cta-title {
+                font-size: 32px;
             }
             
-            .add-box {
-                padding: 30px 20px;
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
@@ -322,236 +404,188 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">
-                    <span class="logo-icon">💰</span>
-                    ExpressDeals
-                </a>
-                <nav class="nav-links">
-                    <a href="#home" class="nav-link">الرئيسية</a>
-                    <a href="#commission" class="nav-link">العمولات</a>
-                    <a href="#how" class="nav-link">كيف أربح؟</a>
-                    <a href="#add" class="nav-link">إضافة منتج</a>
-                    <a href="#contact" class="nav-link">تواصل</a>
-                </nav>
+                <div class="logo">
+                    <div class="logo-text">
+                        <div class="main-title">عروض AliExpress</div>
+                        <div class="sub-title">أكبر منصة للعروض والكوبونات</div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- الهيرو -->
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="container">
-            <h1 class="hero-title">اربح عمولات من منتجات AliExpress</h1>
-            <p class="hero-subtitle">أنشئ متجرك الخاص، أضف منتجات AliExpress، واربح عمولة على كل عملية بيع تتم عبر موقعك</p>
-            <div style="margin-top: 40px;">
-                <a href="#how" class="btn btn-secondary">كيفية البدء</a>
-                <a href="#add" class="btn btn-primary">أضف منتجك الأول</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- المميزات -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">لماذا هذا الموقع مربح؟</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">💸</div>
-                    <h3 class="feature-title">عمولة مرتفعة</h3>
-                    <p>عمولة تصل إلى 10% على سعر المنتج النهائي</p>
+            <h1 class="hero-title">
+                <span class="hero-highlight">أكبر منصة</span>
+                لعروض وكوبونات
+                <span class="hero-highlight">AliExpress</span>
+                في مكان واحد
+            </h1>
+            
+            <p class="hero-subtitle">
+                وفر حتى 90% مع أفضل صفقات AliExpress - العروض الحصرية، الكوبونات المجانية، 
+                وأسعار لا تُصدق تجدها فقط هنا!
+            </p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">+10,000</div>
+                    <div class="stat-text">عرض نشط</div>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">سهل الإدارة</h3>
-                    <p>لوحة تحكم بسيطة لمتابعة المبيعات والأرباح</p>
+                <div class="stat-item">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-text">توفير أقصى</div>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3 class="feature-title">جمهور عالمي</h3>
-                    <p>البيع لعملاء من جميع أنحاء العالم عبر AliExpress</p>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-text">عروض متجددة</div>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3 class="feature-title">مبيعات مستمرة</h3>
-                    <p>منتجات مطلوبة على مدار الساعة بأرباح مستمرة</p>
+                <div class="stat-item">
+                    <div class="stat-number">🌍</div>
+                    <div class="stat-text">شحن عالمي</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- جدول العمولات -->
-    <section id="commission" class="commission-section">
+    <!-- العروض المميزة -->
+    <section class="offers-section">
         <div class="container">
-            <h2 class="section-title">جدول العمولات</h2>
-            <table class="commission-table">
-                <thead>
-                    <tr>
-                        <th>فئة المنتج</th>
-                        <th>نسبة العمولة</th>
-                        <th>مثال: منتج بـ $100</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>إلكترونيات</td>
-                        <td><span class="commission-badge">8-10%</span></td>
-                        <td>ربح $8 - $10</td>
-                    </tr>
-                    <tr>
-                        <td>ملابس وأزياء</td>
-                        <td><span class="commission-badge">5-7%</span></td>
-                        <td>ربح $5 - $7</td>
-                    </tr>
-                    <tr>
-                        <td>أدوات منزلية</td>
-                        <td><span class="commission-badge">6-9%</span></td>
-                        <td>ربح $6 - $9</td>
-                    </tr>
-                    <tr>
-                        <td>هواتف وأجهزة</td>
-                        <td><span class="commission-badge">7-10%</span></td>
-                        <td>ربح $7 - $10</td>
-                    </tr>
-                    <tr>
-                        <td>ألعاب وهوايات</td>
-                        <td><span class="commission-badge">4-6%</span></td>
-                        <td>ربح $4 - $6</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- كيفية الربح -->
-    <section id="how" class="features" style="background: var(--light);">
-        <div class="container">
-            <h2 class="section-title">كيف تربح عمولات؟</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">1️⃣</div>
-                    <h3 class="feature-title">ابحث عن منتج</h3>
-                    <p>اختر منتجاً من AliExpress له عمولة جيدة</p>
+            <h2 class="section-title">🔥 <span>العروض الحارقة</span> لهذا الأسبوع 🔥</h2>
+            
+            <div class="offers-grid">
+                <!-- عرض 1 -->
+                <div class="offer-card">
+                    <div class="offer-badge">خصم 85%</div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">سماعات لاسلكية بلوتوث 5.3</h3>
+                        <p class="offer-desc">سماعات احترافية مع عزل ضوضاء، بطارية 40 ساعة</p>
+                        <div class="offer-price">
+                            <div class="price-new">$9.99</div>
+                            <div class="price-old">$65.99</div>
+                            <div class="save-badge">وفر $56</div>
+                        </div>
+                        <a href="#" class="offer-btn">احصل على العرض</a>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">2️⃣</div>
-                    <h3 class="feature-title">انسخ رابط المنتج</h3>
-                    <p>احصل على رابط المنتج من AliExpress</p>
+                <!-- عرض 2 -->
+                <div class="offer-card">
+                    <div class="offer-badge">خصم 78%</div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">ساعة ذكية بشاشة AMOLED</h3>
+                        <p class="offer-desc">مقاومة للماء، تتبع الصحة، 15 يوم بطارية</p>
+                        <div class="offer-price">
+                            <div class="price-new">$24.99</div>
+                            <div class="price-old">$112.99</div>
+                            <div class="save-badge">وفر $88</div>
+                        </div>
+                        <a href="#" class="offer-btn">احصل على العرض</a>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">3️⃣</div>
-                    <h3 class="feature-title">أضفه لموقعك</h3>
-                    <p>أضف المنتج مع رابط الشراء في موقعك</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">4️⃣</div>
-                    <h3 class="feature-title">اربح العمولة</h3>
-                    <p>عندما يشتري أحد من رابطك، تربح عمولة</p>
+                <!-- عرض 3 -->
+                <div class="offer-card">
+                    <div class="offer-badge">خصم 92%</div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">كاميرا مراقبة 4K WiFi</h3>
+                        <p class="offer-desc">رؤية ليلية، كشف حركة، تخزين سحابي</p>
+                        <div class="offer-price">
+                            <div class="price-new">$12.99</div>
+                            <div class="price-old">$159.99</div>
+                            <div class="save-badge">وفر $147</div>
+                        </div>
+                        <a href="#" class="offer-btn">احصل على العرض</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- إضافة منتج -->
-    <section id="add" class="add-product">
+    <!-- الكوبونات -->
+    <section class="coupons-section">
         <div class="container">
-            <div class="add-box">
-                <div class="add-icon">➕</div>
-                <h2 style="font-size: 28px; margin-bottom: 15px;">أضف منتجك الأول</h2>
-                <p style="color: #666; margin-bottom: 30px; font-size: 16px;">انسخ رابط منتج AliExpress وأضفه لتبدأ في جني الأرباح</p>
-                
-                <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 30px 0; text-align: right;">
-                    <p style="margin-bottom: 10px; font-weight: 600;">مثال رابط منتج:</p>
-                    <p style="color: var(--primary); font-size: 14px; direction: ltr; text-align: center;">
-                        https://s.click.aliexpress.com/e/_DmJJwXX
-                    </p>
-                </div>
-                
-                <button class="btn btn-primary" style="font-size: 18px; padding: 15px 40px;" onclick="addProduct()">
-                    أضف منتج جديد
-                </button>
+            <h2 class="section-title">🎫 <span>كوبونات خصم</span> حصرية 🎫</h2>
+            
+            <div class="coupon-card">
+                <h3 style="font-size: 24px; margin-bottom: 10px;">كوبون خصم خاص</h3>
+                <p style="opacity: 0.9;">استخدم هذا الكود للحصول على خصم إضافي 20% على كل طلب</p>
+                <div class="coupon-code">ALIEXPRESS20</div>
+                <p style="font-size: 14px;">صالح حتى نهاية الشهر | لا حدود للاستخدام</p>
             </div>
+        </div>
+    </section>
+
+    <!-- دعوة للعمل -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">لا تفوت صفقة!</h2>
+            <p class="cta-subtitle">
+                انضم إلى مليون مستخدم يوفّرون معنا يومياً. العروض تتجدد، والأسعار تنخفض، 
+                لكن الفرص محدودة!
+            </p>
+            <a href="#" class="cta-btn">⭐ ابدأ التوفير الآن ⭐</a>
         </div>
     </section>
 
     <!-- الفوتر -->
-    <footer class="footer" id="contact">
+    <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>ExpressDeals</h3>
-                    <p style="color: #d1d5db; margin-top: 10px;">منصة ربح العمولات من AliExpress</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>روابط مهمة</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#commission">جدول العمولات</a></li>
-                        <li><a href="#how">كيفية الربح</a></li>
-                        <li><a href="#add">إضافة منتجات</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>الدعم</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">كيفية الحصول على روابط عمولة</a></li>
-                        <li><a href="#">تتبع المبيعات</a></li>
-                        <li><a href="#">سحب الأرباح</a></li>
-                        <li><a href="#">تواصل مع الدعم</a></li>
-                    </ul>
-                </div>
+            <div class="footer-logo">عروض AliExpress</div>
+            <p class="footer-text">
+                أكبر منصة لعروض وكوبونات AliExpress في مكان واحد. 
+                نوفر لك أفضل الصفقات، أحدث العروض، وأقوى الخصومات مباشرة من المصدر.
+            </p>
+            
+            <div class="footer-links">
+                <a href="#">العروض اليومية</a>
+                <a href="#">كوبونات الخصم</a>
+                <a href="#">أفضل المبيعات</a>
+                <a href="#">دليل الشراء</a>
+                <a href="#">اتصل بنا</a>
             </div>
             
-            <div class="footer-bottom">
-                <p>© 2024 ExpressDeals - موقع ربح عمولات AliExpress | كل عملية شراء = عمولة لك</p>
-            </div>
+            <p style="color: #666; font-size: 14px;">
+                © 2024 عروض AliExpress - جميع العروض من شركة AliExpress الرسمية
+            </p>
         </div>
     </footer>
 
     <script>
-        // دالة إضافة منتج
-        function addProduct() {
-            const productUrl = prompt('انسخ رابط منتج AliExpress هنا:');
-            if (productUrl && productUrl.includes('aliexpress.com')) {
-                const productName = prompt('أدخل اسم المنتج:');
-                if (productName) {
-                    alert(`✅ تمت إضافة المنتج: "${productName}"\n\nستبدأ في جني العمولات عند الشراء من هذا الرابط.`);
-                }
-            } else if (productUrl) {
-                alert('⚠️ الرابط غير صالح. تأكد أنه رابط AliExpress');
-            }
+        // عدّاد تنازلي للعروض
+        function updateCountdown() {
+            const now = new Date();
+            const endOfDay = new Date();
+            endOfDay.setHours(23, 59, 59, 999);
+            
+            const diff = endOfDay - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // يمكنك عرض العدّاد إذا أردت
+            console.log(`⏳ العروض تنتهي خلال: ${hours}h ${minutes}m ${seconds}s`);
         }
         
-        // التمرير السلس
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
+        setInterval(updateCountdown, 1000);
+        
+        // نسخ كود الكوبون
+        document.querySelector('.coupon-code').addEventListener('click', function() {
+            const code = this.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert(`✅ تم نسخ كود الخصم: ${code}\nالصقه عند الدفع للحصول على خصم 20%`);
             });
         });
         
-        // تأثير الهيدر
+        // تأثير التمرير
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 50) {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                header.style.boxShadow = '0 5px 25px rgba(0,0,0,0.15)';
             } else {
-                header.style.boxShadow = 'var(--shadow)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
             }
         });
     </script>
