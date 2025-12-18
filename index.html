@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExpressDeals - تسوق ذكي وعمولة مضمونة</title>
-    <meta name="description" content="اكتشف أفضل صفقات AliExpress مع عمولة على كل عملية شراء. تسوق بذكاء واربح معنا">
+    <title>ExpressDeals - ربح عمولات AliExpress</title>
+    <meta name="description" content="موقع لربح عمولات من منتجات AliExpress - أضف منتجات واربح على كل عملية بيع">
     
     <style>
         /* الأساسيات */
@@ -15,41 +15,34 @@
         }
         
         :root {
-            --primary: #2563eb;       /* أزرق جذاب */
-            --secondary: #3b82f6;     /* أزرق فاتح */
-            --accent: #f59e0b;        /* ذهبي للتميز */
-            --light: #f8fafc;         /* خلفية فاتحة */
-            --dark: #1e293b;          /* نصوص داكنة */
-            --border: #e2e8f0;        /* حدود فاتحة */
+            --primary: #dc2626;       /* أحمر AliExpress */
+            --secondary: #ef4444;     /* أحمر فاتح */
+            --accent: #fbbf24;        /* أصفر ذهبي */
+            --dark: #1f2937;          /* داكن للنصوص */
+            --light: #f9fafb;         /* فاتح للخلفيات */
+            --border: #e5e7eb;        /* حدود */
             --success: #10b981;       /* أخضر النجاح */
             --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
         
         body {
             font-family: 'Segoe UI', 'Tahoma', 'Arial Arabic', sans-serif;
-            background-color: var(--light);
+            background: var(--light);
             color: var(--dark);
             line-height: 1.7;
-            overflow-x: hidden;
         }
         
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        /* الهيكل العام */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        /* الهيدر البسيط */
+        /* الهيدر */
         .header {
             background: white;
             box-shadow: var(--shadow);
+            padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -60,13 +53,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
         }
         
         .logo {
             font-size: 28px;
             font-weight: 800;
             color: var(--primary);
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -74,10 +67,9 @@
         
         .logo-icon {
             color: var(--accent);
-            font-size: 32px;
         }
         
-        .main-nav {
+        .nav-links {
             display: flex;
             gap: 25px;
         }
@@ -85,8 +77,9 @@
         .nav-link {
             color: var(--dark);
             font-weight: 600;
+            text-decoration: none;
             padding: 8px 16px;
-            border-radius: 8px;
+            border-radius: 6px;
             transition: all 0.3s;
         }
         
@@ -95,14 +88,13 @@
             color: var(--primary);
         }
         
-        /* الهيرو الجذاب */
+        /* الهيرو */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             padding: 140px 0 80px;
-            margin-top: 70px;
+            margin-top: 80px;
             text-align: center;
-            border-radius: 0 0 30px 30px;
         }
         
         .hero-title {
@@ -123,12 +115,13 @@
         .btn {
             display: inline-block;
             padding: 14px 32px;
-            border-radius: 10px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s;
             border: none;
+            text-decoration: none;
         }
         
         .btn-primary {
@@ -138,7 +131,7 @@
         
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
         .btn-secondary {
@@ -148,31 +141,32 @@
             margin-right: 15px;
         }
         
-        /* الميزات */
+        /* قسم المميزات */
         .features {
             padding: 80px 0;
-            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--dark);
         }
         
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 40px;
         }
         
         .feature-card {
-            background: var(--light);
+            background: white;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             text-align: center;
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+            border-top: 4px solid var(--primary);
         }
         
         .feature-icon {
@@ -188,46 +182,69 @@
             color: var(--dark);
         }
         
-        /* قسم المنتجات */
-        .products-section {
+        /* جدول العمولات */
+        .commission-section {
+            background: white;
             padding: 80px 0;
-            background: #f1f5f9;
         }
         
-        .section-header {
+        .commission-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .commission-table th {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: right;
+            font-weight: 600;
+        }
+        
+        .commission-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border);
+            text-align: right;
+        }
+        
+        .commission-table tr:hover {
+            background: var(--light);
+        }
+        
+        .commission-badge {
+            background: #d1fae5;
+            color: var(--success);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        /* قسم الإضافة */
+        .add-product {
+            padding: 80px 0;
+            background: var(--light);
             text-align: center;
-            margin-bottom: 50px;
         }
         
-        .section-title {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-        
-        .section-subtitle {
-            color: #64748b;
-            font-size: 18px;
+        .add-box {
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
             max-width: 600px;
             margin: 0 auto;
+            border: 2px dashed var(--primary);
         }
         
-        /* دعوة للعمل */
-        .cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            border-radius: 30px;
-            margin: 80px auto;
-            max-width: 1200px;
-        }
-        
-        .cta-title {
-            font-size: 38px;
-            font-weight: 800;
+        .add-icon {
+            font-size: 64px;
             margin-bottom: 20px;
+            color: var(--primary);
         }
         
         /* الفوتر */
@@ -259,7 +276,8 @@
         }
         
         .footer-links a {
-            color: #cbd5e1;
+            color: #d1d5db;
+            text-decoration: none;
             transition: color 0.3s;
         }
         
@@ -270,8 +288,8 @@
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
             font-size: 14px;
         }
         
@@ -281,73 +299,20 @@
                 font-size: 32px;
             }
             
-            .hero-subtitle {
-                font-size: 16px;
-                padding: 0 15px;
-            }
-            
-            .main-nav {
+            .nav-links {
                 display: none;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-            }
-            
-            .btn {
-                padding: 12px 24px;
-                font-size: 15px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero {
-                padding: 120px 0 60px;
             }
             
             .features-grid {
                 grid-template-columns: 1fr;
             }
             
-            .feature-card {
-                padding: 25px 20px;
-            }
-        }
-        
-        /* تحسينات للجوال */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--dark);
-            cursor: pointer;
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
+            .commission-table {
+                font-size: 14px;
             }
             
-            .main-nav {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                background: white;
-                width: 80%;
-                height: calc(100vh - 70px);
-                flex-direction: column;
-                padding: 30px;
-                box-shadow: var(--shadow-hover);
-                transition: right 0.3s;
-            }
-            
-            .main-nav.active {
-                right: 0;
+            .add-box {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -358,18 +323,15 @@
         <div class="container">
             <div class="header-content">
                 <a href="#" class="logo">
-                    <span class="logo-icon">🛍️</span>
-                    <span>ExpressDeals</span>
+                    <span class="logo-icon">💰</span>
+                    ExpressDeals
                 </a>
-                
-                <button class="mobile-menu-btn" id="menuBtn">☰</button>
-                
-                <nav class="main-nav" id="mainNav">
+                <nav class="nav-links">
                     <a href="#home" class="nav-link">الرئيسية</a>
-                    <a href="#features" class="nav-link">لماذا نحن؟</a>
-                    <a href="#products" class="nav-link">المنتجات</a>
-                    <a href="#how-it-works" class="nav-link">كيفية العمل</a>
-                    <a href="#contact" class="nav-link">اتصل بنا</a>
+                    <a href="#commission" class="nav-link">العمولات</a>
+                    <a href="#how" class="nav-link">كيف أربح؟</a>
+                    <a href="#add" class="nav-link">إضافة منتج</a>
+                    <a href="#contact" class="nav-link">تواصل</a>
                 </nav>
             </div>
         </div>
@@ -378,106 +340,143 @@
     <!-- الهيرو -->
     <section id="home" class="hero">
         <div class="container">
-            <h1 class="hero-title">تسوق بذكاء. وفر أكثر. اربح عمولة.</h1>
-            <p class="hero-subtitle">منصة موثوقة تقدم أفضل منتجات AliExpress مع ضمان العمولة على كل عملية شراء. اكتشف صفقات لا تُصدق!</p>
+            <h1 class="hero-title">اربح عمولات من منتجات AliExpress</h1>
+            <p class="hero-subtitle">أنشئ متجرك الخاص، أضف منتجات AliExpress، واربح عمولة على كل عملية بيع تتم عبر موقعك</p>
             <div style="margin-top: 40px;">
-                <a href="#products" class="btn btn-secondary">تصفح المنتجات</a>
-                <a href="#how-it-works" class="btn btn-primary">كيف أربح عمولة؟</a>
+                <a href="#how" class="btn btn-secondary">كيفية البدء</a>
+                <a href="#add" class="btn btn-primary">أضف منتجك الأول</a>
             </div>
         </div>
     </section>
 
-    <!-- الميزات -->
-    <section id="features" class="features">
+    <!-- المميزات -->
+    <section class="features">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">لماذا تختار ExpressDeals؟</h2>
-                <p class="section-subtitle">نقدم لك تجربة تسوق فريدة مع مزايا حصرية</p>
-            </div>
-            
+            <h2 class="section-title">لماذا هذا الموقع مربح؟</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3 class="feature-title">عمولة مضمونة</h3>
-                    <p>احصل على عمولة مباشرة على كل عملية شراء تتم عبر رابطك</p>
+                    <div class="feature-icon">💸</div>
+                    <h3 class="feature-title">عمولة مرتفعة</h3>
+                    <p>عمولة تصل إلى 10% على سعر المنتج النهائي</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">شحن سريع</h3>
-                    <p>أسرع طرق الشحن العالمية مع تتبع الطلبات</p>
+                    <h3 class="feature-title">سهل الإدارة</h3>
+                    <p>لوحة تحكم بسيطة لمتابعة المبيعات والأرباح</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3 class="feature-title">ضمان الجودة</h3>
-                    <p>نختار المنتجات بعناية ونضمن جودتها</p>
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">جمهور عالمي</h3>
+                    <p>البيع لعملاء من جميع أنحاء العالم عبر AliExpress</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">📞</div>
-                    <h3 class="feature-title">دعم فني 24/7</h3>
-                    <p>فريق دعم متاح على مدار الساعة لمساعدتك</p>
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">مبيعات مستمرة</h3>
+                    <p>منتجات مطلوبة على مدار الساعة بأرباح مستمرة</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- المنتجات -->
-    <section id="products" class="products-section">
+    <!-- جدول العمولات -->
+    <section id="commission" class="commission-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">المنتجات المميزة</h2>
-                <p class="section-subtitle">نعمل على إضافة أفضل المنتجات قريباً. يمكنك اقتراح منتجات ترغب في رؤيتها</p>
-            </div>
-            
-            <div class="feature-card" style="max-width: 600px; margin: 0 auto;">
-                <div class="feature-icon">📦</div>
-                <h3 class="feature-title">قريباً: منتجات حصرية</h3>
-                <p style="margin-bottom: 20px;">نضيف منتجات جديدة يومياً. كن أول من يعرف!</p>
-                <button class="btn btn-primary" id="suggestBtn">اقترح منتجاً</button>
-            </div>
+            <h2 class="section-title">جدول العمولات</h2>
+            <table class="commission-table">
+                <thead>
+                    <tr>
+                        <th>فئة المنتج</th>
+                        <th>نسبة العمولة</th>
+                        <th>مثال: منتج بـ $100</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>إلكترونيات</td>
+                        <td><span class="commission-badge">8-10%</span></td>
+                        <td>ربح $8 - $10</td>
+                    </tr>
+                    <tr>
+                        <td>ملابس وأزياء</td>
+                        <td><span class="commission-badge">5-7%</span></td>
+                        <td>ربح $5 - $7</td>
+                    </tr>
+                    <tr>
+                        <td>أدوات منزلية</td>
+                        <td><span class="commission-badge">6-9%</span></td>
+                        <td>ربح $6 - $9</td>
+                    </tr>
+                    <tr>
+                        <td>هواتف وأجهزة</td>
+                        <td><span class="commission-badge">7-10%</span></td>
+                        <td>ربح $7 - $10</td>
+                    </tr>
+                    <tr>
+                        <td>ألعاب وهوايات</td>
+                        <td><span class="commission-badge">4-6%</span></td>
+                        <td>ربح $4 - $6</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <!-- كيفية العمل -->
-    <section id="how-it-works" class="features" style="background: #f1f5f9;">
+    <!-- كيفية الربح -->
+    <section id="how" class="features" style="background: var(--light);">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">كيف تربح معنا؟</h2>
-                <p class="section-subtitle">3 خطوات بسيطة لبدء جني الأرباح</p>
-            </div>
-            
+            <h2 class="section-title">كيف تربح عمولات؟</h2>
             <div class="features-grid">
-                <div class="feature-card" style="text-align: right;">
+                <div class="feature-card">
                     <div class="feature-icon">1️⃣</div>
-                    <h3 class="feature-title">اختر المنتج</h3>
-                    <p>تصفح منتجاتنا واختر ما يعجبك</p>
+                    <h3 class="feature-title">ابحث عن منتج</h3>
+                    <p>اختر منتجاً من AliExpress له عمولة جيدة</p>
                 </div>
                 
-                <div class="feature-card" style="text-align: right;">
+                <div class="feature-card">
                     <div class="feature-icon">2️⃣</div>
-                    <h3 class="feature-title">شارك الرابط</h3>
-                    <p>انسخ رابط المنتج وشاركه مع الآخرين</p>
+                    <h3 class="feature-title">انسخ رابط المنتج</h3>
+                    <p>احصل على رابط المنتج من AliExpress</p>
                 </div>
                 
-                <div class="feature-card" style="text-align: right;">
+                <div class="feature-card">
                     <div class="feature-icon">3️⃣</div>
+                    <h3 class="feature-title">أضفه لموقعك</h3>
+                    <p>أضف المنتج مع رابط الشراء في موقعك</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">4️⃣</div>
                     <h3 class="feature-title">اربح العمولة</h3>
-                    <p>احصل على عمولتك فور اكتمال الشراء</p>
+                    <p>عندما يشتري أحد من رابطك، تربح عمولة</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- دعوة للعمل -->
-    <div class="container">
-        <div class="cta">
-            <h2 class="cta-title">مستعد لبدء رحلتك معنا؟</h2>
-            <p style="font-size: 18px; margin-bottom: 30px; max-width: 700px; margin: 0 auto 30px;">انضم إلى آلاف المسوقين الناجحين وابدأ في جني الأرباح اليوم</p>
-            <a href="#products" class="btn btn-primary" style="font-size: 18px; padding: 16px 40px;">ابدأ الآن مجاناً</a>
+    <!-- إضافة منتج -->
+    <section id="add" class="add-product">
+        <div class="container">
+            <div class="add-box">
+                <div class="add-icon">➕</div>
+                <h2 style="font-size: 28px; margin-bottom: 15px;">أضف منتجك الأول</h2>
+                <p style="color: #666; margin-bottom: 30px; font-size: 16px;">انسخ رابط منتج AliExpress وأضفه لتبدأ في جني الأرباح</p>
+                
+                <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 30px 0; text-align: right;">
+                    <p style="margin-bottom: 10px; font-weight: 600;">مثال رابط منتج:</p>
+                    <p style="color: var(--primary); font-size: 14px; direction: ltr; text-align: center;">
+                        https://s.click.aliexpress.com/e/_DmJJwXX
+                    </p>
+                </div>
+                
+                <button class="btn btn-primary" style="font-size: 18px; padding: 15px 40px;" onclick="addProduct()">
+                    أضف منتج جديد
+                </button>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- الفوتر -->
     <footer class="footer" id="contact">
@@ -485,61 +484,49 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>ExpressDeals</h3>
-                    <p style="color: #cbd5e1; margin-top: 10px;">منصة التسوق الذكي التي تجمع بين الجودة والربح</p>
+                    <p style="color: #d1d5db; margin-top: 10px;">منصة ربح العمولات من AliExpress</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>روابط سريعة</h3>
+                    <h3>روابط مهمة</h3>
                     <ul class="footer-links">
                         <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#features">المزايا</a></li>
-                        <li><a href="#products">المنتجات</a></li>
-                        <li><a href="#how-it-works">كيفية العمل</a></li>
+                        <li><a href="#commission">جدول العمولات</a></li>
+                        <li><a href="#how">كيفية الربح</a></li>
+                        <li><a href="#add">إضافة منتجات</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h3>الدعم</h3>
                     <ul class="footer-links">
-                        <li><a href="#">الأسئلة الشائعة</a></li>
-                        <li><a href="#">الشروط والأحكام</a></li>
-                        <li><a href="#">سياسة الخصوصية</a></li>
-                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">كيفية الحصول على روابط عمولة</a></li>
+                        <li><a href="#">تتبع المبيعات</a></li>
+                        <li><a href="#">سحب الأرباح</a></li>
+                        <li><a href="#">تواصل مع الدعم</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2024 ExpressDeals. جميع الحقوق محفوظة | تصميم بكل ❤️ لنجاحك</p>
+                <p>© 2024 ExpressDeals - موقع ربح عمولات AliExpress | كل عملية شراء = عمولة لك</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // القائمة المتنقلة
-        const menuBtn = document.getElementById('menuBtn');
-        const mainNav = document.getElementById('mainNav');
-        
-        menuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            menuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
-        });
-        
-        // إغلاق القائمة عند النقر على رابط
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-                menuBtn.textContent = '☰';
-            });
-        });
-        
-        // زر اقتراح منتج
-        document.getElementById('suggestBtn').addEventListener('click', () => {
-            const product = prompt('ما هو المنتج الذي ترغب في رؤيته في متجرنا؟');
-            if (product) {
-                alert(`شكراً لك على اقتراحك! "${product}"\nسيتم درسه وإضافته قريباً.`);
+        // دالة إضافة منتج
+        function addProduct() {
+            const productUrl = prompt('انسخ رابط منتج AliExpress هنا:');
+            if (productUrl && productUrl.includes('aliexpress.com')) {
+                const productName = prompt('أدخل اسم المنتج:');
+                if (productName) {
+                    alert(`✅ تمت إضافة المنتج: "${productName}"\n\nستبدأ في جني العمولات عند الشراء من هذا الرابط.`);
+                }
+            } else if (productUrl) {
+                alert('⚠️ الرابط غير صالح. تأكد أنه رابط AliExpress');
             }
-        });
+        }
         
         // التمرير السلس
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -551,17 +538,17 @@
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
             });
         });
         
-        // إضافة تأثير عند التمرير
+        // تأثير الهيدر
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
+            if (window.scrollY > 50) {
                 header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
             } else {
                 header.style.boxShadow = 'var(--shadow)';
